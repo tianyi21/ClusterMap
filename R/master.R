@@ -77,7 +77,7 @@ cluster_map <- function(marker_file_list, edge_cutoff = 0.1, output, cell_num_li
 		circos_map(mapRes, cell_num_list, output)
 		mapRes <- add_perc(mapRes, cell_num_list)
 	}
-
+	return(mapRes)
 	## Recolor reduction plot for each sample if single Seurat object list is provided.
 	if (!is.null(single_obj_list))
 	{
