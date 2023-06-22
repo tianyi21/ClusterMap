@@ -76,7 +76,7 @@ plot_circos <- function(cell_perc_list, pair, mapRes, col_cord, col_sample)
 	cell_perc <- unlist(temp)
 	names(cell_perc) <- sub('__.', '__', names(cell_perc))
 	cell_perc[cell_perc < 0.01] <- 0.01 ## too small to plot
-	fa <- factor(names(cell_perc), levels = unique(names(cell_perc))
+	fa <- factor(names(cell_perc), levels = unique(names(cell_perc)))
 	## initialize
 	gaps <- lapply(cell_perc_list, function(x) c(rep(1, length(x)-1), 8))
 	circos.par(gap.after = unlist(gaps), start.degree = -3, cell.padding = c(0, 0, 0, 0))
