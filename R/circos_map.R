@@ -101,7 +101,6 @@ plot_circos <- function(cell_perc_list, pair, mapRes, col_cord, col_sample)
 		x$v2 = str_replace_all(x$v2, c("-"="_"))
 		circos.link(x$v1, c(0, cell_perc[x$v1]), x$v2, c(0, cell_perc[x$v2]), col = col, border = NA, h.ratio = 0.5)
 	}
-       print("OK7s")
 	circos.clear()
 }
 
