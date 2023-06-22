@@ -96,15 +96,10 @@ plot_circos <- function(cell_perc_list, pair, mapRes, col_cord, col_sample)
 	for(i in 1:nrow(pair))
 	{
 		x <- pair[i, ]
-		print(x)
-		print(cell_perc)
-		print(cell_perc[x$v1])
-		print(cell_perc[x$v2])
 		col <- makeTransparent(col_cord[x$regroup], round(x$similarity*100))
-		saveRDS(cell_perc, "./tmp1.rds")
-		saveRDS(x, "./tmp2.rds")
+		x$v1 = str_replace_all(x$v1, c(" "="_", "/"="_"))
+		x$v2 = str_replace_all(x$v2, c(" "="_", "/"="_"))
 		circos.link(x$v1, c(0, cell_perc[x$v1]), x$v2, c(0, cell_perc[x$v2]), col = col, border = NA, h.ratio = 0.5)
-		print("OK6")
 	}
        print("OK7s")
 	circos.clear()
