@@ -97,10 +97,11 @@ plot_circos <- function(cell_perc_list, pair, mapRes, col_cord, col_sample)
 	{
 		x <- pair[i, ]
 		print(x)
-		print(cell_prec)
-		print(cell_prec[x$v1])
-		print(cell_prec[x$v2])
+		print(cell_perc)
+		print(cell_perc[x$v1])
+		print(cell_perc[x$v2])
 		col <- makeTransparent(col_cord[x$regroup], round(x$similarity*100))
+		saveRDS(c(a = cell_perc, b = x), "./tmp.rds")
 		circos.link(x$v1, c(0, cell_perc[x$v1]), x$v2, c(0, cell_perc[x$v2]), col = col, border = NA, h.ratio = 0.5)
 		print("OK6")
 	}
