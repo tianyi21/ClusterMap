@@ -59,7 +59,6 @@ circos_map <- function(mapRes, cell_num_list, output, color_cord = NULL, color_s
 	cell_perc_list <- lapply(cell_num_list, function(x) round(x/sum(x), 2))
 	if (is.null(color_sample)) col_sample <- rep(c("#f9865c", "#84e281", "#74d2f7", "#e083fc", "#ffbf66", "#6682ff"), 10) else col_sample <- color_sample
 	if (is.null(color_cord)) col_cord <- gg_color_hue(nrow(mapRes)) else col_cord <- color_cord
-	print("OK0")
 	## circos plot
 	png(paste0(output, '.circos.png'), width=width/7*480, height=height/7*480)
 		plot_circos(cell_perc_list, pair, mapRes, col_cord, col_sample)
@@ -77,13 +76,11 @@ plot_circos <- function(cell_perc_list, pair, mapRes, col_cord, col_sample)
 	cell_perc <- unlist(temp)
 	names(cell_perc) <- sub('__.', '__', names(cell_perc))
 	cell_perc[cell_perc < 0.01] <- 0.01 ## too small to plot
-	fa <- factor(names(cell_perc), levels = unique(names(cell_perc)))
-	print("OK1")
+	fa <- factor(names(cell_perc), levels = unique(names(cell_perc))
 	## initialize
 	gaps <- lapply(cell_perc_list, function(x) c(rep(1, length(x)-1), 8))
 	circos.par(gap.after = unlist(gaps), start.degree = -3, cell.padding = c(0, 0, 0, 0))
 	circos.initialize(fa, xlim = cbind(rep(0, length(cell_perc)), cell_perc))
-	print("OK2")
 	## plot sample sectors
 	circos.track(ylim = c(0, 1), track.height = uh(5, "mm"), bg.border = NA)
 	for (n in names(cell_perc_list)) highlight.sector(paste0(n, "__", names(cell_perc_list[[n]])), track.index = 1,
@@ -95,7 +92,6 @@ plot_circos <- function(cell_perc_list, pair, mapRes, col_cord, col_sample)
 		adj = c(0.3, -2), niceFacing = TRUE)
 		}, bg.col = 'black', bg.border = NA, track.height = 0.05, track.margin = c(0, 0.1)
 	)
-	print("OK3")
 	## plot cord
 	for(i in 1:nrow(pair))
 	{
